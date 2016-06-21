@@ -1,0 +1,28 @@
+[uml, file=Activitiy.png]
+--
+
+(*) -down-> "Dame auf erstem Feld platzieren"
+-down-> "'Jetzige Dame' = Dame auf nächster Zeile"
+-down-> "Versuche Dame zu bewegen"
+
+if "Dame ist am Ende der Zeile" then
+  if "Ist oberste Dame"  then
+    -left->[true] (*)
+  else
+    -down-> [false]"Letzte Dame als 'Jetzige Dame' markieren"
+    -left-> "Versuche Dame zu bewegen"
+  endif
+else
+  if "'Jetzige Dame' Feld frei" then
+    -down->[true] "Dame platzieren"
+    if "8 Damen platziert" then
+      -down->[true] (*)
+    else
+      ->[false] "'Jetzige Dame' = Dame auf nächster Zeile"
+    endif
+  else
+    -->[false] "Versuche Dame zu bewegen"
+  endif
+endif
+
+--
