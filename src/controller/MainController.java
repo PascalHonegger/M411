@@ -1,11 +1,7 @@
 package controller;
 
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -63,16 +59,20 @@ public class MainController {
 	private Stack<QueenController> placedQueens = new Stack<>();
 
 	public void initialize() {
+		//Initialize Queens
 		initializeQueens();
 
+		//Create Bindings
 		attempts.textProperty().bind(attemptsProperty);
 
 		delayProperty.set("30");
 		delay.textProperty().bindBidirectional(delayProperty);
 		delay.textProperty().addListener((observable, oldValue, newValue) -> {
+			//Only accept Numbers
             if(!newValue.matches("\\d*")){
 				delay.setText(oldValue);
 			}else {
+				//Can only continue if new input was a valid number
 				continueButton.setDisable(newValue.length() == 0 || Integer.parseInt(newValue) < 22);
 			}
         });
@@ -81,14 +81,15 @@ public class MainController {
 	@FXML
 	private void handleButtonAction(ActionEvent event) {
 		//Background thread so the GUI isn't blocked
-
 		new Thread(this::ContinueOrStartToPlaceQueens).start();
 	}
 
 	private void ContinueOrStartToPlaceQueens() {
+		//Disable Input during runtime
 		continueButton.setDisable(true);
 		delay.setDisable(true);
 
+		//Continue (Already valid solutions)
 		if (remainingQueens.empty()) {
 			QueenController latestQueen = placedQueens.pop();
 			latestQueen.setColumn(latestQueen.getColumn() + 1);
@@ -97,6 +98,7 @@ public class MainController {
 		}
 
 		while (!remainingQueens.empty()) {
+			//Delay so the user gets more feedback during runtime
 			try {
 				Thread.sleep(Integer.parseInt(delayProperty.get()));
 			} catch (InterruptedException e) {
@@ -105,6 +107,7 @@ public class MainController {
 			TryPlaceNextQueen();
 		}
 
+		//Enable Input again
 		continueButton.setDisable(false);
 		delay.setDisable(false);
 	}
@@ -118,10 +121,13 @@ public class MainController {
 	}
 
 	private void TryPlaceNextQueen() {
+		//Queen that has to be placed next
 		QueenController currentQueen = remainingQueens.pop();
 
+		//Make current queen visible
 		currentQueen.setVisible(true);
 
+		//First queen
 		if(placedQueens.empty())
 		{
 			countAttempt();
@@ -130,16 +136,19 @@ public class MainController {
 			return;
 		}
 
-		//Try place queen
+		//Try place queen until it's at the end
 		while(currentQueen.getColumn() < 8)	{
 			countAttempt();
 
 			//Queen on same column
 			boolean queenInSameColumn = placedQueens.stream().map(q -> q.getColumn()).anyMatch(c -> currentQueen.getColumn() == c);
+
+			//Queen on same diagonals
 			boolean queenInSameLeftDiagonal = placedQueens.stream().map(q -> q.getColumn() - q.getRow()).anyMatch(c -> currentQueen.getColumn() - currentQueen.getRow() == c);
 			boolean queenInSameRightDiagonal = placedQueens.stream().map(q -> q.getColumn() + q.getRow()).anyMatch(c -> currentQueen.getColumn() + currentQueen.getRow() == c);
 
 			if(queenInSameColumn || queenInSameLeftDiagonal || queenInSameRightDiagonal) {
+				//Can't place queen, so move her by one
 				currentQueen.setColumn(currentQueen.getColumn() + 1);
 			}
 			else {
@@ -150,15 +159,19 @@ public class MainController {
 		}
 
 		//Couldn't place queen!
-
 		if(currentQueen.getRow() == 8){
 			initialize();
 			return;
 		}
 
+		//Reset current queen for next try
 		currentQueen.setColumn(0);
+
+		//Hide queen again so only placed and current queen are visible
 		currentQueen.setVisible(false);
 		remainingQueens.push(currentQueen);
+
+		//Move previous queen by one
 		QueenController oldQueen = placedQueens.pop();
 		oldQueen.setColumn(oldQueen.getColumn() + 1);
 		remainingQueens.push(oldQueen);

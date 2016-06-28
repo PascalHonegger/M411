@@ -27,10 +27,6 @@ public class QueenController {
         return GridPane.getRowIndex(queen);
     }
 
-    public void setRow(int row)
-    {
-        GridPane.setRowIndex(queen, row);
-    }
-
-    public void setVisible(boolean visible) { queen.setVisible(visible);}
+    public void setVisible(boolean visible) {
+        queen.setVisible(visible);}
 }
