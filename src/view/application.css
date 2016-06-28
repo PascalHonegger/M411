@@ -1,4 +1,4 @@
-.square {
+.queen {
     -fx-alignment: center;
     -fx-fill-width: true;
     -fx-fill-height: true;
@@ -6,6 +6,7 @@
     -fx-fit-to-height: true;
     -fx-pref-width: 50px;
     -fx-pref-height: 50px;
+    -fx-image: url("images/queen.png");
 }
 
 .mainBoard {

@@ -3,7 +3,8 @@ package controller;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 public class MainController {
@@ -12,21 +13,24 @@ public class MainController {
 	private Text attempts;
 
 	@FXML
-	private Label A1;
+	private GridPane chessboard;
+
 	@FXML
-	private Label A2;
+	private ImageView queen1;
 	@FXML
-	private Label A3;
+	private ImageView queen2;
 	@FXML
-	private Label A4;
+	private ImageView queen3;
 	@FXML
-	private Label A5;
+	private ImageView queen4;
 	@FXML
-	private Label A6;
+	private ImageView queen5;
 	@FXML
-	private Label A7;
+	private ImageView queen6;
 	@FXML
-	private Label A8;
+	private ImageView queen7;
+	@FXML
+	private ImageView queen8;
 
 	private int amountOfAttempts = 0;
 
@@ -42,16 +46,11 @@ public class MainController {
 	}
 
 	private StringProperty attemptsProperty = new SimpleStringProperty();
-	private StringProperty A1Property = new SimpleStringProperty();
 
 	public void initialize() {
 
 		attempts.textProperty().bind(attemptsProperty);
 
 		setAmountOfAttempts(1);
-
-		A1Property = new SimpleStringProperty("X");
-
-		A1.textProperty().bind(A1Property);
 	}
 }
