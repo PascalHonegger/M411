@@ -11,37 +11,37 @@
         <URL value="@application.css" />
     </stylesheets>
     <columnConstraints>
-        <ColumnConstraints hgrow="NEVER" minWidth="160.0" prefWidth="160.0" />
-        <ColumnConstraints hgrow="NEVER" minWidth="160.0" prefWidth="160.0" />
+        <ColumnConstraints hgrow="NEVER" minWidth="180.0" prefWidth="180.0" />
+        <ColumnConstraints hgrow="NEVER" minWidth="180.0" prefWidth="180.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="NEVER" />
-        <RowConstraints minHeight="320.0" prefHeight="320.0" vgrow="NEVER" />
+        <RowConstraints minHeight="360.0" prefHeight="360.0" vgrow="NEVER" />
     </rowConstraints>
     <children>
         <Text fx:id="attempts" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" />
         <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="0" GridPane.fillHeight="true" GridPane.fillWidth="true" GridPane.rowIndex="0" />
 
-        <GridPane GridPane.columnSpan="2" GridPane.rowIndex="1" prefWidth="320" prefHeight="320" styleClass="mainBoard" fx:id="chessboard">
+        <GridPane GridPane.columnSpan="2" GridPane.rowIndex="1" prefWidth="360" prefHeight="360" styleClass="mainBoard" fx:id="chessboard">
             <columnConstraints>
-                <ColumnConstraints hgrow="NEVER" minWidth="40.0" prefWidth="40.0" />
-                <ColumnConstraints hgrow="NEVER" minWidth="40.0" prefWidth="40.0" />
-                <ColumnConstraints hgrow="NEVER" minWidth="40.0" prefWidth="40.0" />
-                <ColumnConstraints hgrow="NEVER" minWidth="40.0" prefWidth="40.0" />
-                <ColumnConstraints hgrow="NEVER" minWidth="40.0" prefWidth="40.0" />
-                <ColumnConstraints hgrow="NEVER" minWidth="40.0" prefWidth="40.0" />
-                <ColumnConstraints hgrow="NEVER" minWidth="40.0" prefWidth="40.0" />
-                <ColumnConstraints hgrow="NEVER" minWidth="40.0" prefWidth="40.0" />
+                <ColumnConstraints hgrow="NEVER" minWidth="45.0" prefWidth="45.0" />
+                <ColumnConstraints hgrow="NEVER" minWidth="45.0" prefWidth="45.0" />
+                <ColumnConstraints hgrow="NEVER" minWidth="45.0" prefWidth="45.0" />
+                <ColumnConstraints hgrow="NEVER" minWidth="45.0" prefWidth="45.0" />
+                <ColumnConstraints hgrow="NEVER" minWidth="45.0" prefWidth="45.0" />
+                <ColumnConstraints hgrow="NEVER" minWidth="45.0" prefWidth="45.0" />
+                <ColumnConstraints hgrow="NEVER" minWidth="45.0" prefWidth="45.0" />
+                <ColumnConstraints hgrow="NEVER" minWidth="45.0" prefWidth="45.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
-                <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
-                <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
-                <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
-                <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
-                <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
-                <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
-                <RowConstraints minHeight="40.0" prefHeight="40.0" vgrow="NEVER" />
+                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
+                <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
             </rowConstraints>
          <children>
              <ImageView styleClass="queen" GridPane.rowIndex="0" GridPane.columnIndex="0" fx:id="queen1" />
