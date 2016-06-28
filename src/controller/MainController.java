@@ -3,10 +3,13 @@ package controller;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
@@ -19,6 +22,8 @@ public class MainController {
 
 	@FXML
 	private Text attempts;
+	@FXML
+	private TextField delay;
 
 	@FXML
 	private ImageView queen1;
@@ -52,6 +57,8 @@ public class MainController {
 
 	private StringProperty attemptsProperty = new SimpleStringProperty();
 
+	private StringProperty delayProperty = new SimpleStringProperty();
+
 	private Stack<QueenController> remainingQueens = new Stack<>();
 	private Stack<QueenController> placedQueens = new Stack<>();
 
@@ -59,6 +66,16 @@ public class MainController {
 		initializeQueens();
 
 		attempts.textProperty().bind(attemptsProperty);
+
+		delayProperty.set("30");
+		delay.textProperty().bindBidirectional(delayProperty);
+		delay.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(!newValue.matches("\\d*")){
+				delay.setText(oldValue);
+			}else {
+				continueButton.setDisable(newValue.length() == 0 || Integer.parseInt(newValue) < 22);
+			}
+        });
 	}
 
 	@FXML
@@ -70,34 +87,40 @@ public class MainController {
 
 	private void ContinueOrStartToPlaceQueens() {
 		continueButton.setDisable(true);
+		delay.setDisable(true);
 
 		if (remainingQueens.empty()) {
 			QueenController latestQueen = placedQueens.pop();
 			latestQueen.setColumn(latestQueen.getColumn() + 1);
 			remainingQueens.push(latestQueen);
+			latestQueen.setVisible(true);
 		}
 
 		while (!remainingQueens.empty()) {
+			try {
+				Thread.sleep(Integer.parseInt(delayProperty.get()));
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			TryPlaceNextQueen();
 		}
 
 		continueButton.setDisable(false);
+		delay.setDisable(false);
 	}
 
 	private void countAttempt()
 	{
 		amountOfAttempts++;
-		setAmountOfAttempts(amountOfAttempts);
+		if(amountOfAttempts % 10 == 0){
+			setAmountOfAttempts(amountOfAttempts);
+		}
 	}
 
 	private void TryPlaceNextQueen() {
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
 		QueenController currentQueen = remainingQueens.pop();
+
+		currentQueen.setVisible(true);
 
 		if(placedQueens.empty())
 		{
@@ -134,6 +157,7 @@ public class MainController {
 		}
 
 		currentQueen.setColumn(0);
+		currentQueen.setVisible(false);
 		remainingQueens.push(currentQueen);
 		QueenController oldQueen = placedQueens.pop();
 		oldQueen.setColumn(oldQueen.getColumn() + 1);

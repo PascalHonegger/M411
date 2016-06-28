@@ -8,24 +8,29 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 <?import javafx.scene.image.ImageView?>
+<?import com.sun.javafx.scene.control.skin.InputField?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
     <stylesheets>
         <URL value="@application.css" />
     </stylesheets>
     <columnConstraints>
-        <ColumnConstraints hgrow="NEVER" minWidth="180.0" prefWidth="180.0" />
-        <ColumnConstraints hgrow="NEVER" minWidth="180.0" prefWidth="180.0" />
+        <ColumnConstraints hgrow="NEVER" minWidth="120.0" prefWidth="120.0" />
+        <ColumnConstraints hgrow="NEVER" minWidth="120.0" prefWidth="120.0" />
+        <ColumnConstraints hgrow="NEVER" minWidth="120.0" prefWidth="120.0" />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="NEVER" />
         <RowConstraints minHeight="360.0" prefHeight="360.0" vgrow="NEVER" />
     </rowConstraints>
     <children>
-        <Text fx:id="attempts" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" wrappingWidth="180" text="Nächste Möglichkeit finden"/>
-        <Button fx:id="continueButton" mnemonicParsing="false" onAction="#handleButtonAction" text="Button" GridPane.columnIndex="0" GridPane.fillHeight="true" GridPane.fillWidth="true" GridPane.rowIndex="0" />
+        <Button fx:id="continueButton" mnemonicParsing="false" onAction="#handleButtonAction" text="Continue" GridPane.columnIndex="0" GridPane.fillHeight="true" GridPane.fillWidth="true" GridPane.rowIndex="0" />
 
-        <GridPane prefHeight="360" prefWidth="360" styleClass="mainBoard" GridPane.columnSpan="2" GridPane.rowIndex="1">
+        <Text fx:id="attempts" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="120" GridPane.columnIndex="1" />
+
+        <TextField fx:id="delay" prefHeight="50" prefWidth="120" GridPane.columnIndex="2" />
+
+        <GridPane prefHeight="360" prefWidth="360" styleClass="mainBoard" GridPane.columnSpan="3" GridPane.rowIndex="1">
             <columnConstraints>
                 <ColumnConstraints hgrow="NEVER" minWidth="45.0" prefWidth="45.0" />
                 <ColumnConstraints hgrow="NEVER" minWidth="45.0" prefWidth="45.0" />
@@ -47,14 +52,14 @@
                 <RowConstraints minHeight="45.0" prefHeight="45.0" vgrow="NEVER" />
             </rowConstraints>
          <children>
-             <ImageView fx:id="queen1" styleClass="queen" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-             <ImageView fx:id="queen2" styleClass="queen" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-             <ImageView fx:id="queen3" styleClass="queen" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-             <ImageView fx:id="queen4" styleClass="queen" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-             <ImageView fx:id="queen5" styleClass="queen" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-             <ImageView fx:id="queen6" styleClass="queen" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-             <ImageView fx:id="queen7" styleClass="queen" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-             <ImageView fx:id="queen8" styleClass="queen" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+             <ImageView fx:id="queen1" styleClass="queen" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+             <ImageView fx:id="queen2" styleClass="queen" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+             <ImageView fx:id="queen3" styleClass="queen" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+             <ImageView fx:id="queen4" styleClass="queen" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+             <ImageView fx:id="queen5" styleClass="queen" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+             <ImageView fx:id="queen6" styleClass="queen" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+             <ImageView fx:id="queen7" styleClass="queen" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+             <ImageView fx:id="queen8" styleClass="queen" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="7" />
          </children>
         </GridPane>
     </children>

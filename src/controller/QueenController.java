@@ -31,4 +31,6 @@ public class QueenController {
     {
         GridPane.setRowIndex(queen, row);
     }
+
+    public void setVisible(boolean visible) { queen.setVisible(visible);}
 }
