@@ -22,6 +22,7 @@ public class Main extends Application {
 		Scene scene = new Scene(rootLayout);
 		primaryStage.getIcons().add(new Image("http://www.iconsfind.com/wp-content/uploads/2015/11/20151106_563c235abcd0c.png"));
 		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
 		primaryStage.setTitle("Das Damenproblem");
 		primaryStage.show();
 	}
