@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
@@ -58,6 +59,7 @@ public class MainController {
 	private Stack<QueenController> remainingQueens = new Stack<>();
 	private Stack<QueenController> placedQueens = new Stack<>();
 
+	@FXML
 	public void initialize() {
 		//Initialize Queens
 		initializeQueens();
@@ -76,6 +78,7 @@ public class MainController {
 				continueButton.setDisable(newValue.length() == 0 || Integer.parseInt(newValue) < 22);
 			}
         });
+		delay.setTooltip(new Tooltip("Delay in ms"));
 	}
 
 	@FXML
@@ -141,7 +144,7 @@ public class MainController {
 			countAttempt();
 
 			//Queen on same column
-			boolean queenInSameColumn = placedQueens.stream().map(q -> q.getColumn()).anyMatch(c -> currentQueen.getColumn() == c);
+			boolean queenInSameColumn = placedQueens.stream().map(QueenController::getColumn).anyMatch(c -> currentQueen.getColumn() == c);
 
 			//Queen on same diagonals
 			boolean queenInSameLeftDiagonal = placedQueens.stream().map(q -> q.getColumn() - q.getRow()).anyMatch(c -> currentQueen.getColumn() - currentQueen.getRow() == c);
