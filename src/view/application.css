@@ -4,8 +4,8 @@
     -fx-fill-height: true;
     -fx-fit-to-width: true;
     -fx-fit-to-height: true;
-    -fx-pref-width: 50px;
-    -fx-pref-height: 50px;
+    -fx-pref-width: 45px;
+    -fx-pref-height: 45px;
     -fx-image: url("images/queen.png");
 }
 
